@@ -1,0 +1,212 @@
+:root {
+  --dark-color: #333;
+  --light-color: #fff;
+  --blue-color: #2690d4;
+  --light-gray-color: #eaeaea;
+  --padding: 1em 0;
+}
+
+body {
+  background-color: var(--dark-color);
+  color: var(--light-color);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.1em;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(5, auto);
+  grid-template-areas:
+    'header header'
+    'sectionA sectionA'
+    'sectionB sectionB'
+    'sectionC sectionC'
+    'sectionD sectionE'
+    'footer footer';
+}
+
+.header {
+  grid-area: header;
+
+  position: relative;
+}
+
+.sectionA {
+  grid-area: sectionA;
+  padding: 2em;
+  background-color: var(--light-gray-color);
+  color: var(--dark-color);
+}
+
+.sectionB {
+  grid-area: sectionB;
+
+  display: grid;
+  grid-template-columns: repeat(3, 300px);
+  justify-content: center;
+  justify-items: center;
+}
+
+.sectionC {
+  grid-area: sectionC;
+
+  padding: 2em;
+  background: var(--light-color);
+  color: var(--dark-color);
+}
+
+.sectionD {
+  grid-area: sectionD;
+
+  background-color: var(--blue-color);
+  padding: 2em;
+}
+
+.sectionE {
+  grid-area: sectionE;
+
+  background-color: var(--dark-color);
+  padding: 2em;
+}
+
+footer {
+  grid-area: footer;
+
+  display: flex;
+
+  padding: 2em;
+  background: #000;
+  color: var(--light-color);
+}
+
+.header h1 {
+  margin: 100px 25px 0;
+}
+
+.textContent {
+  padding: var(--padding);
+  margin: 0 auto;
+}
+
+.backgroundImage {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background: var(--dark-color) url(./images/showCase.png) no-repeat center;
+  background-size: cover;
+  opacity: 0.4;
+}
+
+.headersButton {
+  display: inline-block;
+  padding: 1em 2em;
+  margin: 0.5em 0 3em;
+  border: 1px solid #666;
+  background-color: var(--dark-color);
+  color: var(--light-color);
+  text-decoration: none;
+}
+
+.headersButton:hover {
+  color: var(--dark-color);
+  background-color: var(--light-gray-color);
+}
+
+.sectionA .textContent {
+  max-width: 50%;
+  column-count: 2;
+}
+
+.card {
+  margin: 30px 10px;
+  background-color: var(--light-color);
+  color: var(--dark-color);
+}
+
+.card img {
+  object-fit: cover;
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.cardInformation {
+  padding: 1.5em;
+}
+
+.sectionC .textContent {
+  max-width: 45%;
+}
+
+.sectionD a {
+  color: var(--light-color);
+}
+
+footer a {
+  color: var(--blue-color);
+}
+
+footer div {
+  width: 50%;
+}
+
+/* Media Queries */
+
+@media screen and (max-width: 1200px) {
+  .sectionA .textContent {
+    column-count: 1;
+  }
+
+  .header .textContent,
+  .sectionA .textContent,
+  .sectionC .textContent {
+    max-width: 70%;
+  }
+}
+
+@media screen and (max-width: 927px) {
+  .sectionB {
+    grid-template-columns: 500px;
+  }
+}
+
+@media screen and (max-width: 656px) {
+  .gridContainer {
+    grid-template: repeat(6, auto) / 1fr;
+    grid-template-areas:
+      'header'
+      'sectionA'
+      'sectionB'
+      'sectionC'
+      'sectionD'
+      'sectionE'
+      'footer';
+  }
+
+  footer {
+    flex-direction: column;
+    padding: 1em;
+  }
+
+  footer div {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 606px) {
+  .header h1 {
+    margin: 70px 25px 0;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .header .textContent,
+  .sectionA .textContent,
+  .sectionC .textContent {
+    max-width: 85%;
+  }
+}
