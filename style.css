@@ -3,7 +3,6 @@
   --light-color: #fff;
   --blue-color: #2690d4;
   --light-gray-color: #eaeaea;
-  --padding: 1em 0;
 }
 
 body {
@@ -28,6 +27,20 @@ body {
     'footer footer';
 }
 
+.gridSection {
+  display: grid;
+  grid-template-columns: 1fr repeat(2, minmax(auto, 25em)) 1fr;
+  justify-content: center;
+
+  padding: 0 20px;
+}
+
+.gridSectionContent {
+  grid-column: 2/4;
+
+  margin: 70px 0;
+}
+
 .header {
   grid-area: header;
 
@@ -35,25 +48,21 @@ body {
 }
 
 .sectionA {
+  display: grid;
+
   grid-area: sectionA;
-  padding: 2em;
+
   background-color: var(--light-gray-color);
   color: var(--dark-color);
 }
 
 .sectionB {
   grid-area: sectionB;
-
-  display: grid;
-  grid-template-columns: repeat(3, 300px);
-  justify-content: center;
-  justify-items: center;
 }
 
 .sectionC {
   grid-area: sectionC;
 
-  padding: 2em;
   background: var(--light-color);
   color: var(--dark-color);
 }
@@ -62,33 +71,32 @@ body {
   grid-area: sectionD;
 
   background-color: var(--blue-color);
-  padding: 2em;
 }
 
 .sectionE {
   grid-area: sectionE;
 
   background-color: var(--dark-color);
-  padding: 2em;
 }
 
-footer {
+.footer {
   grid-area: footer;
-
-  display: flex;
 
   padding: 2em;
   background: #000;
   color: var(--light-color);
 }
 
-.header h1 {
-  margin: 100px 25px 0;
+.footer div {
+  grid-column: span 2;
 }
 
 .textContent {
-  padding: var(--padding);
-  margin: 0 auto;
+  padding: 1em 0;
+}
+
+.sectionA .textContent {
+  column-count: 2;
 }
 
 .backgroundImage {
@@ -104,7 +112,6 @@ footer {
 .headersButton {
   display: inline-block;
   padding: 1em 2em;
-  margin: 0.5em 0 3em;
   border: 1px solid #666;
   background-color: var(--dark-color);
   color: var(--light-color);
@@ -116,13 +123,15 @@ footer {
   background-color: var(--light-gray-color);
 }
 
-.sectionA .textContent {
-  max-width: 50%;
-  column-count: 2;
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 300px);
+  justify-content: center;
+  justify-items: center;
 }
 
 .card {
-  margin: 30px 10px;
+  margin: 10px;
   background-color: var(--light-color);
   color: var(--dark-color);
 }
@@ -135,42 +144,26 @@ footer {
 }
 
 .cardInformation {
-  padding: 1.5em;
-}
-
-.sectionC .textContent {
-  max-width: 45%;
+  padding: 1em;
 }
 
 .sectionD a {
   color: var(--light-color);
 }
 
-footer a {
+.footer a {
   color: var(--blue-color);
-}
-
-footer div {
-  width: 50%;
 }
 
 /* Media Queries */
 
-@media screen and (max-width: 1200px) {
-  .sectionA .textContent {
-    column-count: 1;
-  }
-
-  .header .textContent,
-  .sectionA .textContent,
-  .sectionC .textContent {
-    max-width: 70%;
-  }
-}
-
 @media screen and (max-width: 927px) {
-  .sectionB {
-    grid-template-columns: 500px;
+  .gridSectionContent {
+    margin: 45px 0;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -187,26 +180,11 @@ footer div {
       'footer';
   }
 
-  footer {
-    flex-direction: column;
-    padding: 1em;
+  .footer.gridSection {
+    grid-template: 1fr 1fr / 1fr;
   }
 
-  footer div {
-    width: 100%;
-  }
-}
-
-@media screen and (max-width: 606px) {
-  .header h1 {
-    margin: 70px 25px 0;
-  }
-}
-
-@media screen and (max-width: 460px) {
-  .header .textContent,
-  .sectionA .textContent,
-  .sectionC .textContent {
-    max-width: 85%;
+  .sectionA .textContent {
+    column-count: 1;
   }
 }
